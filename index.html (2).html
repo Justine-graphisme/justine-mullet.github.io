@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justine Mullet — Graphiste & Directrice Artistique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #1a1a1a;
+    --blanc: #fafaf8;
+    --creme: #f4f0e8;
+    --rose: #e8a598;
+    --rose-pale: #f5e0db;
+    --vert: #7a9e8e;
+    --texte: #3a3a3a;
+    --gris: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanc);
+    color: var(--texte);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--noir);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--texte);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rose); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    background: var(--creme);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.05;
+    color: var(--noir);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--gris);
+    max-width: 380px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--noir);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+
+  .hero-cta:hover { background: var(--rose); }
+
+  .hero-right {
+    background: var(--rose-pale);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-right-inner {
+    text-align: center;
+    padding: 4rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--noir);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.5rem;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--noir);
+    line-height: 1.4;
+    margin-bottom: 3rem;
+  }
+
+  /* SECTION COMPÉTENCES CARROUSEL */
+  .competences {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .competences-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 1rem;
+    cursor: grab;
+  }
+
+  .competences-track::-webkit-scrollbar { display: none; }
+
+  .comp-card {
+    flex-shrink: 0;
+    background: var(--creme);
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    text-align: center;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .comp-card:hover {
+    background: var(--rose-pale);
+    transform: translateY(-4px);
+  }
+
+  .comp-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .comp-title {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--noir);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTION PROJETS */
+  .section-header {
+    padding: 5rem 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--noir);
+  }
+
+  .section-link {
+    font-size: 0.8rem;
+    color: var(--rose);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* GRILLE PROJETS */
+  .projets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 0 4rem 5rem;
+  }
+
+  .projet-card {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--creme);
+  }
+
+  .projet-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .projet-emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .projet-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--noir);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .projet-card:hover .projet-overlay { opacity: 0.92; }
+
+  .projet-overlay-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .projet-overlay-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .projet-tag {
+    font-size: 0.7rem;
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    background: rgba(232,165,152,0.15);
+    padding: 0.35rem 0.75rem;
+    border-radius: 0;
+  }
+
+  .projet-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--noir);
+    margin-bottom: 0.5rem;
+  }
+
+  .projet-card-cat {
+    font-size: 0.75rem;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* BIG PROJET FEATURE */
+  .projet-feature {
+    grid-column: span 2;
+  }
+
+  .projet-feature .projet-card-inner {
+    background: var(--rose-pale);
+  }
+
+  /* À PROPOS */
+  .apropos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--noir);
+    color: white;
+  }
+
+  .apropos-left {
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .apropos-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.5rem;
+  }
+
+  .apropos-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .apropos-text {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.9;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .apropos-right {
+    padding: 6rem 5rem;
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .skill-badge {
+    font-size: 0.7rem;
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* CLIENTS */
+  .clients {
+    padding: 4rem;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .clients-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gris);
+    margin-bottom: 3rem;
+  }
+
+  .clients-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem 5rem;
+  }
+
+  .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gris);
+    font-style: italic;
+    transition: color 0.2s;
+  }
+
+  .client-name:hover { color: var(--noir); }
+
+  /* CONTACT */
+  .contact {
+    padding: 7rem 4rem;
+    text-align: center;
+    background: var(--creme);
+  }
+
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--noir);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .contact-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .contact-sub {
+    color: var(--gris);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .contact-btn-primary {
+    background: var(--noir);
+    color: white;
+  }
+
+  .contact-btn-primary:hover { background: var(--rose); }
+
+  .contact-btn-secondary {
+    border: 1.5px solid var(--noir);
+    color: var(--noir);
+  }
+
+  .contact-btn-secondary:hover {
+    background: var(--noir);
+    color: white;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-size: 0.8rem;
+    color: var(--gris);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.75rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 4rem 2rem; }
+    .hero-right { min-height: 60vw; }
+    .projets-grid { grid-template-columns: 1fr; padding: 0 1.5rem 3rem; }
+    .projet-feature { grid-column: span 1; }
+    .apropos { grid-template-columns: 1fr; }
+    .apropos-left, .apropos-right { padding: 3rem 2rem; }
+    .section-header { padding: 3rem 1.5rem 1.5rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .competences { padding: 3rem 1.5rem; }
+    .contact { padding: 4rem 2rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Justine Mullet</a>
+  <ul class="nav-links">
+    <li><a href="#graphisme">Graphisme</a></li>
+    <li><a href="#illustration">Illustration</a></li>
+    <li><a href="#photo">Photo</a></li>
+    <li><a href="#video">Vidéo</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Graphiste · Directrice Artistique · Illustratrice</p>
+    <h1 class="hero-title">Justine<br><em>Mullet</em></h1>
+    <p class="hero-desc">10 ans d'expérience en direction artistique, graphisme et illustration. De Van Cleef & Arpels à Cofidis, je crée des univers visuels qui racontent une histoire.</p>
+    <a href="#graphisme" class="hero-cta">Voir mes projets →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <p class="hero-tagline">"Graphiste avec<br>une âme<br><em>d'illustratrice."</em></p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-label">ans d'expérience</div>
+        </div>
+        <div>
+          <div class="stat-num">DA</div>
+          <div class="stat-label">Direction artistique</div>
+        </div>
+        <div>
+          <div class="stat-num">360°</div>
+          <div class="stat-label">Compétences</div>
+        </div>
+        <div>
+          <div class="stat-num">🌸</div>
+          <div class="stat-label">Lille · Paris · Tokyo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES CARROUSEL -->
+<section class="competences">
+  <div class="competences-track" id="compTrack">
+    <div class="comp-card">
+      <div class="comp-icon">🎨</div>
+      <div class="comp-title">Direction Artistique</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">✏️</div>
+      <div class="comp-title">Illustration</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">📦</div>
+      <div class="comp-title">Packaging</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🎬</div>
+      <div class="comp-title">Motion Design</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">📷</div>
+      <div class="comp-title">Photographie</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">📐</div>
+      <div class="comp-title">Mise en page</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">📒</div>
+      <div class="comp-title">Charte graphique</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🖥️</div>
+      <div class="comp-title">Réseaux sociaux</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🍃</div>
+      <div class="comp-title">Procreate</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">⭐</div>
+      <div class="comp-title">Canva Creator</div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAPHISME & DA -->
+<section id="graphisme">
+  <div class="section-header">
+    <h2 class="section-title">Graphisme & DA</h2>
+    <a href="mailto:justinellmullet@gmail.com" class="section-link">Me contacter →</a>
+  </div>
+  <div class="projets-grid">
+
+    <div class="projet-card projet-feature">
+      <div class="projet-card-inner" style="background: #e8e0d4;">
+        <div class="projet-emoji">💎</div>
+        <div class="projet-card-title">Van Cleef & Arpels</div>
+        <div class="projet-card-cat">Édition · Catalogue</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Van Cleef & Arpels</div>
+        <div class="projet-overlay-desc">Participation à l'élaboration du catalogue des pièces uniques de la maison Van Cleef & Arpels. Mise en page éditoriale haut de gamme, typographie soignée et direction artistique élégante.</div>
+        <span class="projet-tag">Édition · Luxe · 2022</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #dce8f0;">
+        <div class="projet-emoji">🔷</div>
+        <div class="projet-card-title">Cofidis Discovery</div>
+        <div class="projet-card-cat">Charte graphique · Signalétique</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Cofidis Discovery</div>
+        <div class="projet-overlay-desc">Création complète de la charte graphique de l'espace d'innovation Discovery au sein du groupe Cofidis. Identité visuelle, gimmicks modulables, typographie et application sur vitrophanies grand format.</div>
+        <span class="projet-tag">Charte graphique · 2024</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #f0e8d8;">
+        <div class="projet-emoji">☕</div>
+        <div class="projet-card-title">Le Square Café</div>
+        <div class="projet-card-cat">DA · Illustration · Cartes</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Le Square Café — Lille</div>
+        <div class="projet-overlay-desc">Refonte complète de l'identité visuelle du café-restaurant lillois. Illustrations originales, cartes de restaurant, contenus réseaux sociaux. DA colorée et vivante à l'image de l'établissement.</div>
+        <span class="projet-tag">DA · Illustration · 2023</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #e8f0e4;">
+        <div class="projet-emoji">📦</div>
+        <div class="projet-card-title">Alice Délice</div>
+        <div class="projet-card-cat">Packaging · Communication</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Alice Délice</div>
+        <div class="projet-overlay-desc">Graphiste packaging en stage puis CDD. Création de packagings produit de A à Z, shootings produits, pictogrammes et catalogue de Noël 2017.</div>
+        <span class="projet-tag">Packaging · 2017</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #f0e4ec;">
+        <div class="projet-emoji">🌍</div>
+        <div class="projet-card-title">Agence Mastergram · Dubaï</div>
+        <div class="projet-card-cat">Illustration · Branding</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Mastergram · Dubaï</div>
+        <div class="projet-overlay-desc">Collaboration internationale avec l'agence de communication Mastergram basée à Dubaï. Illustrations et direction artistique pour le projet Kiki Chaï.</div>
+        <span class="projet-tag">International · 2016</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #f0f0f0;">
+        <div class="projet-emoji">👠</div>
+        <div class="projet-card-title">Minelli</div>
+        <div class="projet-card-cat">Social Media · DA · Mode</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Minelli</div>
+        <div class="projet-overlay-desc">Création de contenus réseaux sociaux pour la marque de chaussures Minelli — stories, reels, posts feed. DA sobre et élégante : Pantone, "Fit of the week", "New In", recommandations culturelles.</div>
+        <span class="projet-tag">Social Media · Mode · 2023</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #e8f5e4;">
+        <div class="projet-emoji">⭐</div>
+        <div class="projet-card-title">Canva Creator</div>
+        <div class="projet-card-cat">Templates · Édition · Print</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Canva Creator</div>
+        <div class="projet-overlay-desc">Créatrice de templates sur la plateforme Canva, utilisés par des millions d'utilisateurs dans le monde. Couvertures de rapports de stage, plannings, carnets scolaires, contenus réseaux sociaux.</div>
+        <span class="projet-tag">Templates · International · En cours</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #e4e8f0;">
+        <div class="projet-emoji">📱</div>
+        <div class="projet-card-title">Agence OP1C</div>
+        <div class="projet-card-cat">Digital · Motion · Réseaux</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Agence OP1C — CDI 3 ans</div>
+        <div class="projet-overlay-desc">Création de contenus digitaux, illustration et motion design pour des marques comme Uriage, Minelli, Ariane et Saint-Maclou au sein de l'agence spécialisée réseaux sociaux.</div>
+        <span class="projet-tag">Digital · Motion · 2021–2024</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ILLUSTRATION -->
+<section id="illustration">
+  <div class="section-header">
+    <h2 class="section-title">Illustration</h2>
+  </div>
+  <div class="projets-grid">
+
+    <div class="projet-card projet-feature">
+      <div class="projet-card-inner" style="background: #f5e0db;">
+        <div class="projet-emoji">🦊</div>
+        <div class="projet-card-title">Dame Kagero — Yokai & créatures</div>
+        <div class="projet-card-cat">Illustration · Édition · Salons</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Univers Dame Kagero</div>
+        <div class="projet-overlay-desc">Univers illustré personnel inspiré du folklore japonais — yokai, insectes ornementaux, créatures fantastiques. Exposition Yokai au Hanami Café Lille, sélectionnée au Design Festa Tokyo 2026.</div>
+        <span class="projet-tag">Illustration · Exposition · Tokyo 2026</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #e8f0dc;">
+        <div class="projet-emoji">👑</div>
+        <div class="projet-card-title">Joséphine Baker</div>
+        <div class="projet-card-cat">Illustration commémorative</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">Joséphine Baker — Panthéon</div>
+        <div class="projet-overlay-desc">Illustration commémorative créée à l'occasion de l'entrée de Joséphine Baker au Panthéon en 2021.</div>
+        <span class="projet-tag">Illustration · 2021</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <div class="projet-card-inner" style="background: #dce0f0;">
+        <div class="projet-emoji">🎮</div>
+        <div class="projet-card-title">YSOCorp — Game Art</div>
+        <div class="projet-card-cat">Modélisation 3D · Jeu vidéo</div>
+      </div>
+      <div class="projet-overlay">
+        <div class="projet-overlay-title">YSOCorp</div>
+        <div class="projet-overlay-desc">Game artiste et modélisatrice 3D au sein du studio de jeu vidéo YSOCorp.</div>
+        <span class="projet-tag">Game Art · 3D · 2020</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- URIAGE -->
+<section id="uriage" style="background: #f0f6fb;">
+  <div class="section-header">
+    <h2 class="section-title">Uriage Eau Thermale</h2>
+    <span style="font-size:0.8rem;color:var(--gris);font-style:italic;">Illustration · Paper art · Social Media · 2021–2024</span>
+  </div>
+
+  <!-- INTRO URIAGE -->
+  <div style="padding: 0 4rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+    <div>
+      <p style="font-family:'Playfair Display',serif;font-size:1.4rem;line-height:1.6;color:var(--noir);margin-bottom:1rem;">Une collaboration longue durée avec une grande marque de dermocosmétique française.</p>
+      <p style="color:var(--gris);font-size:0.9rem;line-height:1.8;">Illustrations originales de produits, infographies skincare, paper art grand format, contenus réseaux sociaux, et création d'un jeu de tarot complet pour le calendrier de l'Avent.</p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <span style="background:#dbeeff;color:#1a5fa8;font-size:0.75rem;padding:0.4rem 1rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">Illustration</span>
+      <span style="background:#dbeeff;color:#1a5fa8;font-size:0.75rem;padding:0.4rem 1rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">Paper Art</span>
+      <span style="background:#dbeeff;color:#1a5fa8;font-size:0.75rem;padding:0.4rem 1rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">Social Media</span>
+      <span style="background:#dbeeff;color:#1a5fa8;font-size:0.75rem;padding:0.4rem 1rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">Direction artistique</span>
+    </div>
+  </div>
+
+  <!-- PAPER ART -->
+  <div style="padding: 0 4rem 2rem;">
+    <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gris);margin-bottom:1.5rem;font-weight:500;">— Paper Art</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      <div style="background:#dbeeff;aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;text-align:center;">
+        <div style="font-size:3rem;">🏔️</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--noir);">Thermes d'Uriage en paper art</div>
+        <div style="font-size:0.75rem;color:var(--gris);">Architecture découpée en papier multicouche — bleus Uriage</div>
+      </div>
+      <div style="background:#e8f4ff;aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;text-align:center;">
+        <div style="font-size:3rem;">🌸</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--noir);">Edelweiss en paper art</div>
+        <div style="font-size:0.75rem;color:var(--gris);">Fleur ajourée en papier blanc découpé — photographie produit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL MEDIA URIAGE -->
+  <div style="padding: 0 4rem 3rem;">
+    <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gris);margin-bottom:1.5rem;font-weight:500;">— Contenus réseaux sociaux & illustrations</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div class="projet-card" style="aspect-ratio:1;">
+        <div class="projet-card-inner" style="background:#cde8f5;">
+          <div class="projet-emoji">💧</div>
+          <div class="projet-card-title" style="font-size:0.9rem;">Illustrations produits</div>
+        </div>
+        <div class="projet-overlay">
+          <div class="projet-overlay-title">Illustrations produits</div>
+          <div class="projet-overlay-desc">Mains illustrées tenant les produits phares Uriage — eau micellaire, crème compacte SPF30. Style ligne claire, tons bleu Uriage.</div>
+          <span class="projet-tag">Illustration · Motion</span>
+        </div>
+      </div>
+      <div class="projet-card" style="aspect-ratio:1;">
+        <div class="projet-card-inner" style="background:#dbeeff;">
+          <div class="projet-emoji">📊</div>
+          <div class="projet-card-title" style="font-size:0.9rem;">Infographies skincare</div>
+        </div>
+        <div class="projet-overlay">
+          <div class="projet-overlay-title">Infographies skincare</div>
+          <div class="projet-overlay-desc">Série d'infographies pédagogiques : signes d'une barrière cutanée fragilisée, bonne dose de crème, alliés anti-acné, mythe ou réalité. Design accessible et bienveillant.</div>
+          <span class="projet-tag">Illustration · Infographie</span>
+        </div>
+      </div>
+      <div class="projet-card" style="aspect-ratio:1;">
+        <div class="projet-card-inner" style="background:#e4f0fa;">
+          <div class="projet-emoji">🧴</div>
+          <div class="projet-card-title" style="font-size:0.9rem;">Routines & selfcare</div>
+        </div>
+        <div class="projet-overlay">
+          <div class="projet-overlay-title">Séries selfcare</div>
+          <div class="projet-overlay-desc">Contenus illustrés sur les routines skincare — "Pour vous...", "Team routine minimaliste", "Sérum d'eau : rencontre ingrédients". Illustrations de personnages diversifiés et inclusifs.</div>
+          <span class="projet-tag">Illustration · Social Media</span>
+        </div>
+      </div>
+      <div class="projet-card" style="aspect-ratio:1;">
+        <div class="projet-card-inner" style="background:#c8e0f2;">
+          <div class="projet-emoji">🌞</div>
+          <div class="projet-card-title" style="font-size:0.9rem;">Campagnes été</div>
+        </div>
+        <div class="projet-overlay">
+          <div class="projet-overlay-title">Campagnes saisonnières</div>
+          <div class="projet-overlay-desc">Séries estivales : "Les cuisses qui frottent", "Bonne dose de crème solaire", "Hydrater après exposition soleil". Ton bienveillant et inclusif, design coloré et accessible.</div>
+          <span class="projet-tag">Social Media · 2022–2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAROT -->
+  <div style="padding: 0 4rem 5rem;">
+    <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gris);margin-bottom:0.5rem;font-weight:500;">— Jeu de Tarot · Calendrier de l'Avent Uriage</p>
+    <p style="font-size:0.9rem;color:var(--gris);margin-bottom:2rem;font-style:italic;">22 arcanes majeurs illustrés — palette nuit/cuivre/terracotta — personnages modernes et inclusifs transposés dans l'univers Uriage des Alpes</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;" id="tarotGrid">
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">0. Le Fou</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Randonneuse au sommet · Montagne</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">I. Le Magicien</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Méditation · Cascade · Forêt enneigée</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">II. La Grande Prêtresse</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Femme sur trône · Colonnes · Alpes</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">III. L'Impératrice</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Reine couronnée · Nuit étoilée</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">IV. L'Empereur</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Homme élégant · Architecture moderne</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">V. Le Pape</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Homme bienveillant · Cascade thermale</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">VI. Les Amoureux</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Couple dans jacuzzi · Ciel étoilé</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">VIII. La Force</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Femme & cerf · Montagnes</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XII. Le Pendu</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Visage renversé · Cheveux-nuages</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XV. La Tour</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Clocher · Éclairs dorés · Nuit</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XVI. Le Diable</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Miroir & double maléfique</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XVIII. La Lune</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Chemin d'eau · Renards · Lune dorée</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XIX. Le Soleil</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Mère & nourrisson · Tournesols</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XX. Le Jugement</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Trio inclusif · Forêt alpine</div>
+      </div>
+      <div style="background:#1a2a4a;aspect-ratio:0.6;border:2px solid #c9a96e;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;text-align:center;color:white;">
+        <div style="font-size:0.9rem;font-weight:500;">XXI. Le Monde</div>
+        <div style="font-size:0.7rem;color:#c9a96e;opacity:0.8;">Trio face au globe terrestre · Houx</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.8rem;color:var(--gris);font-style:italic;">15 arcanes présentés sur 22 illustrés au total — calendrier de l'Avent Uriage</p>
+  </div>
+</section>
+
+<!-- PHOTO -->
+<section id="photo">
+  <div class="section-header">
+    <h2 class="section-title">Photographie</h2>
+  </div>
+  <div style="padding: 0 4rem 5rem; color: var(--gris); font-style: italic; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+    Direction artistique photo pour restaurants, hôtels et marques lilloises. <br>Galerie disponible sur demande.
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="section-header">
+    <h2 class="section-title">Vidéo & Motion</h2>
+  </div>
+  <div style="padding: 0 4rem 5rem;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/tOFFO2V6p3I" style="width:100%;height:100%;border:none;" allowfullscreen title="Ariane"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Ariane</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/OvyI7BiVQNY" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 1"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/QProXRiOcjI" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 2"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/yfhzyqSMpzU" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 3"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/LS2wHEiJ7TU" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 4"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/ITh1tHS9YTY" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 5"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/pdT6ak6z-G4" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 6"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/kSrW7rZJWSo" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 7"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/HIaJFvWaxlI" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 8"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/vGvTY3NjBlE" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 9"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+      <div style="background: var(--noir); aspect-ratio: 9/16; position: relative; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/7lWuAinxFZo" style="width:100%;height:100%;border:none;" allowfullscreen title="Motion 10"></iframe>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem;background:rgba(0,0,0,0.6);font-size:0.75rem;color:white;text-align:center;letter-spacing:0.05em;text-transform:uppercase;">Motion Design</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="apropos">
+  <div class="apropos-left">
+    <p class="apropos-eyebrow">À propos</p>
+    <h2 class="apropos-title">Graphiste avec une âme d'illustratrice.</h2>
+    <p class="apropos-text">Basée à Lille, je travaille depuis 10 ans à l'intersection du graphisme, de la direction artistique et de l'illustration. J'ai collaboré avec des maisons de luxe, des grandes entreprises et des restaurateurs passionnés — toujours avec la même conviction : chaque projet mérite une identité visuelle qui lui ressemble vraiment.</p>
+    <p class="apropos-text">En parallèle, je développe mon univers illustré personnel Dame Kagero, inspiré du folklore japonais, qui m'a conduite jusqu'au Design Festa de Tokyo en 2026.</p>
+  </div>
+  <div class="apropos-right">
+    <ul class="skills-list">
+      <li class="skill-item">Adobe Photoshop <span class="skill-badge">Expert</span></li>
+      <li class="skill-item">Adobe Illustrator <span class="skill-badge">Expert</span></li>
+      <li class="skill-item">Adobe InDesign <span class="skill-badge">Expert</span></li>
+      <li class="skill-item">After Effects <span class="skill-badge">Motion</span></li>
+      <li class="skill-item">Lightroom <span class="skill-badge">Photo</span></li>
+      <li class="skill-item">Procreate <span class="skill-badge">Illustration</span></li>
+      <li class="skill-item">Canva Creator <span class="skill-badge">Templates</span></li>
+      <li class="skill-item">Direction artistique <span class="skill-badge">360°</span></li>
+      <li class="skill-item">Préparation fichiers impression <span class="skill-badge">Print</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients">
+  <p class="clients-label">Ils m'ont fait confiance</p>
+  <div class="clients-list">
+    <span class="client-name">Van Cleef & Arpels</span>
+    <span class="client-name">Cofidis Group</span>
+    <span class="client-name">Decathlon</span>
+    <span class="client-name">Minelli</span>
+    <span class="client-name">Poulain</span>
+    <span class="client-name">La Mie Câline</span>
+    <span class="client-name">Rivière Dumat</span>
+    <span class="client-name">Agence US Paris</span>
+    <span class="client-name">Agence OP1C</span>
+    <span class="client-name">Le Square Café</span>
+    <span class="client-name">Alice Délice</span>
+    <span class="client-name">Mastergram · Dubaï</span>
+    <span class="client-name">Uriage</span>
+    <span class="client-name">Saint-Maclou</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="contact-title">Travaillons<br><em>ensemble</em></h2>
+  <p class="contact-sub">Disponible pour des missions freelance et des opportunités en CDI dans la région lilloise.</p>
+  <div class="contact-links">
+    <a href="mailto:justinellmullet@gmail.com" class="contact-btn contact-btn-primary">M'écrire</a>
+    <a href="https://www.instagram.com/balalaika_party/" target="_blank" class="contact-btn contact-btn-secondary">Instagram</a>
+    <a href="https://www.linkedin.com/in/justine-mullet" target="_blank" class="contact-btn contact-btn-secondary">LinkedIn</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Justine Mullet — Tous droits réservés</span>
+  <span>Lille · justinellmullet@gmail.com</span>
+</footer>
+
+<script>
+  // Carrousel drag
+  const track = document.getElementById('compTrack');
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => {
+    isDown = true;
+    track.style.cursor = 'grabbing';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+
+  // Nav smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Fade in sections
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.projet-card, .comp-card, .client-name').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
